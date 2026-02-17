@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — SheetGuard</title>
+  <meta name="description" content="Privacy Policy for SheetGuard: Conditional Cell Lock & Data Validation Google Sheets add-on.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #4F46E5;
+      --brand-dark: #4338CA;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --max-w: 720px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--gray-800); background: #fff; -webkit-font-smoothing: antialiased; line-height: 1.7; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; max-width: 1080px; margin: 0 auto; padding: 18px 24px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; color: var(--gray-900); letter-spacing: -0.5px; }
+    .nav-logo-icon { width: 34px; height: 34px; background: var(--brand); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-600); }
+    .nav-links a:hover { color: var(--gray-900); text-decoration: none; }
+
+    .page-header { text-align: center; padding: 60px 24px 40px; }
+    .page-header h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; color: var(--gray-900); margin-bottom: 8px; }
+    .page-header p { font-size: 14px; color: var(--gray-400); }
+
+    .content { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 80px; }
+    .content h2 { font-size: 20px; font-weight: 700; color: var(--gray-900); margin: 36px 0 12px; }
+    .content h2:first-of-type { margin-top: 0; }
+    .content p { font-size: 14px; color: var(--gray-600); margin-bottom: 12px; }
+    .content ul { margin: 8px 0 12px 20px; }
+    .content ul li { font-size: 14px; color: var(--gray-600); margin-bottom: 6px; }
+
+    .footer { padding: 40px 24px; border-top: 1px solid var(--gray-100); max-width: 1080px; margin: 0 auto; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: var(--gray-400); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 13px; color: var(--gray-500); }
+    .footer-links a:hover { color: var(--gray-700); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      SheetGuard
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <h1>Privacy Policy</h1>
+    <p>Last updated: February 17, 2026</p>
+  </div>
+
+  <div class="content">
+    <h2>Overview</h2>
+    <p>SheetGuard ("the Add-on") is a Google Sheets add-on that provides conditional cell locking and data validation. This Privacy Policy explains what data the Add-on accesses, how it is used, and how it is protected.</p>
+
+    <h2>Data We Access</h2>
+    <p>The Add-on accesses only the data necessary to provide its functionality:</p>
+    <ul>
+      <li><strong>Cell values and headers</strong> &mdash; Read to evaluate validation rules and enforce conditional requirements.</li>
+      <li><strong>Sheet names and structure</strong> &mdash; Read to identify the active sheet and display its name in the sidebar.</li>
+      <li><strong>Your email address</strong> &mdash; Used to identify the spreadsheet owner for rule management permissions and Pro license verification.</li>
+    </ul>
+
+    <h2>Data Storage</h2>
+    <p>All validation rules are stored using Google's built-in <strong>DocumentProperties</strong> service, which is tied directly to the spreadsheet. Rules are not stored on any external server.</p>
+    <p>Temporary data (rule cache, violation notifications) is stored in Google's <strong>CacheService</strong> and automatically expires within minutes.</p>
+
+    <h2>External Requests</h2>
+    <p>The Add-on makes one type of external request:</p>
+    <ul>
+      <li><strong>License verification</strong> &mdash; The spreadsheet owner's email address is sent to our license verification endpoint to check Pro subscription status. No spreadsheet content, cell values, or other user data is included in this request.</li>
+    </ul>
+
+    <h2>Data We Do NOT Collect</h2>
+    <p>We do not:</p>
+    <ul>
+      <li>Store any spreadsheet content on external servers</li>
+      <li>Track user behavior or analytics within the spreadsheet</li>
+      <li>Share any user data with third parties</li>
+      <li>Use cookies or tracking technologies</li>
+      <li>Access spreadsheets other than the one currently open</li>
+    </ul>
+
+    <h2>Data Sharing</h2>
+    <p>We do not sell, trade, or share any user data with third parties. The only data transmitted externally is the spreadsheet owner's email for license verification, as described above.</p>
+
+    <h2>Data Retention</h2>
+    <p>Validation rules persist in the spreadsheet's DocumentProperties as long as the spreadsheet exists. Users can delete all rules at any time via the SheetGuard sidebar. Uninstalling the Add-on does not automatically delete stored rules &mdash; they can be removed manually before uninstalling.</p>
+
+    <h2>Security</h2>
+    <p>All communication between the Add-on and Google's services uses HTTPS encryption. The Add-on uses the <code>spreadsheets.currentonly</code> OAuth scope, which restricts access to only the spreadsheet where the Add-on is actively being used.</p>
+
+    <h2>Google API Services User Data Policy</h2>
+    <p>SheetGuard's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>The Add-on is not directed to children under 13. We do not knowingly collect personal information from children.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be reflected on this page with an updated "Last updated" date. Continued use of the Add-on after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>Contact</h2>
+    <p>If you have questions about this Privacy Policy, contact us at <a href="mailto:vaibhav@aayutech.in">vaibhav@aayutech.in</a>.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 SheetGuard. All rights reserved.</span>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="mailto:vaibhav@aayutech.in">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

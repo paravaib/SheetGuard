@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — SheetGuard</title>
+  <meta name="description" content="Get help with SheetGuard: Conditional Cell Lock & Data Validation for Google Sheets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #4F46E5;
+      --brand-light: #EEF2FF;
+      --brand-dark: #4338CA;
+      --green: #059669;
+      --green-light: #ECFDF5;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --max-w: 720px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--gray-800); background: #fff; -webkit-font-smoothing: antialiased; line-height: 1.7; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; max-width: 1080px; margin: 0 auto; padding: 18px 24px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; color: var(--gray-900); letter-spacing: -0.5px; }
+    .nav-logo-icon { width: 34px; height: 34px; background: var(--brand); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-600); }
+    .nav-links a:hover { color: var(--gray-900); text-decoration: none; }
+
+    .page-header { text-align: center; padding: 60px 24px 40px; }
+    .page-header h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; color: var(--gray-900); margin-bottom: 8px; }
+    .page-header p { font-size: 15px; color: var(--gray-500); max-width: 480px; margin: 0 auto; }
+
+    .content { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 80px; }
+
+    /* Contact Card */
+    .contact-card {
+      background: var(--brand-light);
+      border: 1px solid var(--brand);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--brand);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 4px;
+    }
+
+    .contact-info p {
+      font-size: 14px;
+      color: var(--gray-600);
+      margin-bottom: 2px;
+    }
+
+    .contact-info a {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-800);
+      cursor: pointer;
+      text-align: left;
+      transition: background 150ms ease;
+    }
+
+    .faq-question:hover { background: var(--gray-50); }
+
+    .faq-question svg {
+      flex-shrink: 0;
+      transition: transform 200ms ease;
+      color: var(--gray-400);
+    }
+
+    .faq-item.open .faq-question svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 16px;
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    .footer { padding: 40px 24px; border-top: 1px solid var(--gray-100); max-width: 1080px; margin: 0 auto; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: var(--gray-400); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 13px; color: var(--gray-500); }
+    .footer-links a:hover { color: var(--gray-700); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .page-header h1 { font-size: 28px; }
+      .contact-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      SheetGuard
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-header">
+    <h1>Support</h1>
+    <p>Have a question or need help? Check the FAQ below or reach out directly.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Contact -->
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="contact-info">
+        <h3>Email Support</h3>
+        <p>We typically respond within 24 hours.</p>
+        <a href="mailto:vaibhav@aayutech.in">vaibhav@aayutech.in</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+
+    <div class="faq-item open">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I install SheetGuard?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        Install SheetGuard from the Google Workspace Marketplace. Once installed, open any Google Sheet, go to <strong>Extensions &gt; SheetGuard</strong> &gt; Open Sidebar. The sidebar will appear on the right side where you can create your first rule.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Why was my edit reverted?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        Your edit triggered a validation rule. For example, if a rule says "IF Status = Done, THEN Approval must not be empty," changing Status to "Done" without filling Approval will cause the edit to revert. Check the toast notification or the note on cell A of that row for details on what needs to be fixed.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can other editors create or modify rules?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        No. Only the spreadsheet owner can create, edit, delete, toggle, or reorder rules. Other editors see a "View only" banner and have rules enforced on their edits automatically. This prevents unauthorized changes to validation logic.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What happens when I paste many rows at once?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        SheetGuard validates bulk pastes (up to 1,000+ rows) automatically. Rows that violate rules are highlighted in red with error notes on cell A. Your data is preserved &mdash; you can fix violations inline or press Ctrl+Z to undo the paste.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I set the correct order for my edits?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        If your rule says "IF Column A = X, THEN Column B must = Y," you should fill Column B first, then set Column A. This way, when the condition triggers, the required column already has the correct value and validation passes.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How do I clear the red error highlights?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        Open the SheetGuard sidebar and click the "Clear all error highlights" button below the Active Rules section. This removes all red backgrounds and error notes added by SheetGuard. Once you fix the data and make a valid edit, highlights are cleared automatically for that row.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What's the difference between Free and Pro?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        Free gives you 1 rule with 1 condition per sheet. Pro ($5.99/month) unlocks up to 25 rules per sheet, multiple conditions per rule, AND/OR logic, cross-column comparisons, custom required values, and rules on all sheets. See the <a href="pricing.html">Pricing page</a> for a full comparison.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I export my rules to another spreadsheet?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        Yes. Click the "Export" button in the sidebar to copy your rules as JSON. Then open the target spreadsheet, open SheetGuard, and use the "Import" button to paste and apply the rules. Note that column headers must match between spreadsheets.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Will uninstalling delete my rules?
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-answer">
+        No. Rules are stored in the spreadsheet's DocumentProperties and persist even after uninstalling. However, rules will no longer be enforced without the add-on. To remove rules before uninstalling, delete them from the sidebar.
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 SheetGuard. All rights reserved.</span>
+      <ul class="footer-links">
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="mailto:vaibhav@aayutech.in">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      var item = btn.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
