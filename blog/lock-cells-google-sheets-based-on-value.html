@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Lock Cells in Google Sheets Based on Cell Value — SheetGuard Blog</title>
+  <meta name="description" content="Learn how to lock cells in Google Sheets based on cell value. Explore native protection limits, Apps Script workarounds, and no-code conditional locking with SheetGuard.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://paravaib.github.io/SheetGuard/blog/lock-cells-google-sheets-based-on-value.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to Lock Cells in Google Sheets Based on Cell Value">
+  <meta property="og:description" content="Learn how to lock cells in Google Sheets based on cell value. Explore native protection limits, Apps Script workarounds, and no-code conditional locking with SheetGuard.">
+  <meta property="og:url" content="https://paravaib.github.io/SheetGuard/blog/lock-cells-google-sheets-based-on-value.html">
+  <meta property="og:site_name" content="SheetGuard">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Lock Cells in Google Sheets Based on Cell Value">
+  <meta name="twitter:description" content="Learn how to lock cells in Google Sheets based on cell value. Explore native protection limits, Apps Script workarounds, and no-code conditional locking with SheetGuard.">
+  <meta name="keywords" content="lock cells google sheets based on value, conditional cell lock google sheets, protect cells based on condition, google sheets lock row when status approved, SheetGuard">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Lock Cells in Google Sheets Based on Cell Value",
+    "description": "Learn how to lock cells in Google Sheets based on cell value. Explore native protection limits, Apps Script workarounds, and no-code conditional locking with SheetGuard.",
+    "url": "https://paravaib.github.io/SheetGuard/blog/lock-cells-google-sheets-based-on-value.html",
+    "datePublished": "2026-02-17",
+    "dateModified": "2026-02-17",
+    "author": {
+      "@type": "Organization",
+      "name": "SheetGuard Team",
+      "url": "https://paravaib.github.io/SheetGuard/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SheetGuard",
+      "url": "https://paravaib.github.io/SheetGuard/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://paravaib.github.io/SheetGuard/blog/lock-cells-google-sheets-based-on-value.html"
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #4F46E5;
+      --brand-light: #EEF2FF;
+      --brand-dark: #4338CA;
+      --brand-50: #E0E7FF;
+      --green: #059669;
+      --green-light: #ECFDF5;
+      --amber: #F59E0B;
+      --amber-dark: #D97706;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF;
+      --gray-500: #6B7280;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --max-w: 720px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--gray-800); background: #fff; -webkit-font-smoothing: antialiased; line-height: 1.7; }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .nav { display: flex; align-items: center; justify-content: space-between; max-width: 1080px; margin: 0 auto; padding: 18px 24px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; color: var(--gray-900); letter-spacing: -0.5px; }
+    .nav-logo-icon { width: 34px; height: 34px; background: var(--brand); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-600); }
+    .nav-links a:hover { color: var(--gray-900); text-decoration: none; }
+
+    .article-header { text-align: center; padding: 60px 24px 32px; max-width: var(--max-w); margin: 0 auto; }
+    .article-meta { font-size: 13px; color: var(--gray-400); margin-bottom: 16px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .article-meta span { display: inline-flex; align-items: center; gap: 4px; }
+    .article-header h1 { font-size: 36px; font-weight: 800; letter-spacing: -1px; color: var(--gray-900); line-height: 1.2; margin-bottom: 16px; }
+    .article-header .subtitle { font-size: 17px; color: var(--gray-500); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+
+    .article-content { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 60px; }
+    .article-content h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: var(--gray-900); margin: 48px 0 16px; }
+    .article-content h3 { font-size: 18px; font-weight: 700; color: var(--gray-900); margin: 32px 0 12px; }
+    .article-content p { font-size: 16px; color: var(--gray-700); margin-bottom: 20px; line-height: 1.8; }
+    .article-content ul, .article-content ol { margin: 0 0 20px 24px; }
+    .article-content li { font-size: 16px; color: var(--gray-700); margin-bottom: 8px; line-height: 1.7; }
+    .article-content strong { color: var(--gray-900); }
+
+    .code-block {
+      background: var(--gray-900);
+      color: #E5E7EB;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 0 0 24px;
+      overflow-x: auto;
+      font-family: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .code-block .comment { color: #6B7280; }
+    .code-block .keyword { color: #C084FC; }
+    .code-block .string { color: #34D399; }
+    .code-block .function { color: #60A5FA; }
+
+    .callout {
+      background: var(--brand-light);
+      border: 1px solid var(--brand);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .callout h4 { font-size: 16px; font-weight: 700; color: var(--brand-dark); margin-bottom: 8px; }
+    .callout p { font-size: 15px; color: var(--gray-700); margin-bottom: 12px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 40px 0;
+      text-align: center;
+      color: #fff;
+    }
+    .cta-box h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: #fff; }
+    .cta-box p { font-size: 15px; opacity: 0.9; margin-bottom: 20px; color: #fff; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 8px; font-family: inherit; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 150ms ease; }
+    .btn-white { background: #fff; color: var(--brand); font-weight: 700; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); text-decoration: none; }
+
+    .footer { padding: 40px 24px; border-top: 1px solid var(--gray-100); max-width: 1080px; margin: 0 auto; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: var(--gray-400); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 13px; color: var(--gray-500); }
+    .footer-links a:hover { color: var(--gray-700); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .article-header h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      SheetGuard
+    </a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pricing.html">Pricing</a></li>
+      <li><a href="../support.html">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- Article Header -->
+  <header class="article-header">
+    <div class="article-meta">
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        February 17, 2026
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        SheetGuard Team
+      </span>
+      <span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        7 min read
+      </span>
+    </div>
+    <h1>How to Lock Cells in Google Sheets Based on Cell Value</h1>
+    <p class="subtitle">Google Sheets native protection is all-or-nothing. Here is how to conditionally lock cells so that specific rows become uneditable when a status changes or a threshold is met.</p>
+  </header>
+
+  <!-- Article Content -->
+  <article class="article-content">
+
+    <h2>The Problem: Google Sheets Protection Is Binary</h2>
+
+    <p>If you have ever managed a shared Google Sheet, you know the frustration. Google Sheets lets you protect a range or an entire sheet, but the protection applies to every row in that range, all the time. There is no built-in way to say "lock this row only when the Status column says Approved."</p>
+
+    <p>This creates a real workflow problem. Consider a project tracker where team members fill in task details, hours, and notes. Once a manager sets the status to "Approved," those rows should be frozen so nobody accidentally changes a completed record. With native Google Sheets protection, your options are limited:</p>
+
+    <ul>
+      <li><strong>Protect the entire column.</strong> This prevents all edits, not just the ones in approved rows. Team members can no longer update tasks that are still in progress.</li>
+      <li><strong>Manually protect individual rows.</strong> This is technically possible but wildly impractical. Every time a status changes, someone has to open the protection settings and adjust the range. In a sheet with hundreds of rows, this is unsustainable.</li>
+      <li><strong>Use filter views as a workaround.</strong> This hides approved rows from view but does not actually prevent edits. Anyone who removes the filter can change anything.</li>
+    </ul>
+
+    <p>None of these approaches give you what you actually need: <strong>conditional cell locking based on a cell value</strong>.</p>
+
+    <h2>The Manual Approach: Apps Script</h2>
+
+    <p>Google Apps Script can bridge this gap. You can write an <code>onEdit</code> trigger that checks whether a specific column matches a value and then programmatically adds or removes protection. Here is a simplified example:</p>
+
+    <div class="code-block">
+<span class="keyword">function</span> <span class="function">onEdit</span>(e) {<br>
+&nbsp;&nbsp;<span class="keyword">var</span> sheet = e.source.<span class="function">getActiveSheet</span>();<br>
+&nbsp;&nbsp;<span class="keyword">var</span> range = e.range;<br>
+&nbsp;&nbsp;<span class="keyword">var</span> row = range.<span class="function">getRow</span>();<br>
+&nbsp;&nbsp;<span class="keyword">var</span> statusCol = <span class="string">5</span>; <span class="comment">// Column E = Status</span><br>
+<br>
+&nbsp;&nbsp;<span class="keyword">var</span> statusValue = sheet.<span class="function">getRange</span>(row, statusCol).<span class="function">getValue</span>();<br>
+<br>
+&nbsp;&nbsp;<span class="keyword">if</span> (statusValue === <span class="string">"Approved"</span>) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">var</span> protection = sheet.<span class="function">getRange</span>(row, <span class="string">1</span>, <span class="string">1</span>, sheet.<span class="function">getLastColumn</span>())<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span class="function">protect</span>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span class="function">setDescription</span>(<span class="string">"Row locked - Approved"</span>);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;protection.<span class="function">removeEditors</span>(protection.<span class="function">getEditors</span>());<br>
+&nbsp;&nbsp;&nbsp;&nbsp;protection.<span class="function">addEditor</span>(Session.<span class="function">getEffectiveUser</span>());<br>
+&nbsp;&nbsp;}<br>
+}
+    </div>
+
+    <p>This works, but it comes with significant drawbacks:</p>
+
+    <h3>Execution Quotas and Speed</h3>
+    <p>Apps Script has execution time limits. The <code>onEdit</code> simple trigger runs with limited permissions, meaning it cannot reliably manage protections for other users. You need an installable trigger, which requires the sheet owner to set it up manually through the script editor.</p>
+
+    <h3>Maintenance Burden</h3>
+    <p>Every time your spreadsheet structure changes (columns are added, renamed, or reordered) you need to update the script. If the person who wrote the script leaves the team, the remaining members may have no idea how to modify it. For non-technical teams, this is a non-starter.</p>
+
+    <h3>No Bulk Paste Handling</h3>
+    <p>The <code>onEdit</code> trigger fires once per edit event. When someone pastes 200 rows at once, the trigger receives a single event for the entire paste range. Your script needs complex logic to iterate through every pasted row, check conditions, and apply protections individually, all within the execution time limit.</p>
+
+    <h3>No Revert Mechanism</h3>
+    <p>Native Apps Script protection prevents future edits, but it does not revert an edit that already happened. If someone changes a cell value from "Approved" to something else before the protection kicks in, you have lost data integrity. There is a race condition between the edit and the protection being applied.</p>
+
+    <h2>Practical Examples of Conditional Cell Locking</h2>
+
+    <p>Before exploring solutions, let us look at the most common scenarios where teams need value-based cell locking:</p>
+
+    <h3>Example 1: Lock Row When Status = "Approved"</h3>
+    <p>A project management sheet where rows should become read-only once a task is marked as approved. This prevents team members from accidentally modifying completed work or changing historical records.</p>
+
+    <h3>Example 2: Require Sign-Off Before Allowing Status Change</h3>
+    <p>An expense tracker where the "Approved By" column must contain a name before the "Status" column can be changed to "Paid." This enforces an approval workflow directly within the spreadsheet.</p>
+
+    <h3>Example 3: Lock Cells When Amount Exceeds a Threshold</h3>
+    <p>A budget sheet where any line item over $10,000 requires a manager's review. Once the amount is entered, the row should lock until a review column is filled in, preventing unauthorized changes to high-value entries.</p>
+
+    <h3>Example 4: Prevent Backdating</h3>
+    <p>An operations log where the date column should not be editable once set. If the "Completion Date" has a value, no one should be able to change it, ensuring the integrity of your timeline records.</p>
+
+    <h2>The No-Code Solution: SheetGuard</h2>
+
+    <p><a href="../index.html">SheetGuard</a> is a Google Sheets add-on built specifically to solve the conditional cell locking problem without writing a single line of code. Instead of maintaining Apps Script functions, you create rules through a visual sidebar interface.</p>
+
+    <p>Here is how you would set up the "lock row when approved" example:</p>
+
+    <ol>
+      <li>Open your Google Sheet and go to <strong>Extensions &gt; SheetGuard &gt; Open Sidebar</strong>.</li>
+      <li>Click <strong>New Rule</strong> and set the condition: <em>IF Status equals "Approved"</em>.</li>
+      <li>Set the required action: <em>THEN lock the row</em> (or require specific columns to have values before the status can change).</li>
+      <li>Save the rule. SheetGuard immediately starts enforcing it on every edit.</li>
+    </ol>
+
+    <div class="callout">
+      <h4>How SheetGuard Differs from Native Protection</h4>
+      <p>Unlike Google Sheets built-in protection, SheetGuard evaluates conditions in real time. When an edit violates a rule, SheetGuard automatically reverts the change and shows a clear explanation of what went wrong. There is no race condition, and bulk pastes are validated row by row with violations highlighted in red.</p>
+    </div>
+
+    <h3>Cross-Column Comparisons</h3>
+    <p>SheetGuard's <a href="../pricing.html">Pro plan</a> supports cross-column comparisons. You can create rules like "IF End Date is before Start Date, THEN revert the edit" or "IF Invoice Amount is greater than Budget, THEN require Manager Approval." These comparisons happen automatically on every edit without any scripting.</p>
+
+    <h3>AND / OR Logic</h3>
+    <p>Real-world workflows rarely depend on a single condition. With SheetGuard Pro, you can combine multiple conditions. For example: "IF Status = Approved AND Department = Finance, THEN require Audit Reference." This level of conditional logic would require dozens of lines of Apps Script code to implement manually.</p>
+
+    <h2>When to Use Each Approach</h2>
+
+    <p>To summarize, here is a comparison to help you decide which method fits your needs:</p>
+
+    <ul>
+      <li><strong>Native Google Sheets protection</strong> works well when you need to lock an entire sheet or a fixed range permanently. It is free and built in, but it cannot react to cell values.</li>
+      <li><strong>Apps Script</strong> is a good choice if you have a developer on your team, your requirements are highly custom, and you are comfortable maintaining code long-term. Be aware of execution limits and the maintenance overhead.</li>
+      <li><strong>SheetGuard</strong> is ideal for teams that need conditional locking without technical complexity. It takes minutes to set up, works instantly, handles bulk pastes, and requires zero code. The <a href="../index.html">free plan</a> covers basic use cases with one rule per sheet.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Lock Cells Based on Value, No Code Required</h3>
+      <p>Set up conditional cell locking in under two minutes. SheetGuard enforces your rules in real time with automatic revert on violations.</p>
+      <a href="../index.html" class="btn btn-white">Install SheetGuard Free</a>
+    </div>
+
+    <h2>Getting Started</h2>
+
+    <p>If you are ready to move beyond the limitations of native Google Sheets protection, <a href="../index.html">install SheetGuard from the Google Workspace Marketplace</a>. The free plan lets you create one rule per sheet with one condition, which is enough to cover the most common conditional locking scenarios.</p>
+
+    <p>For teams that need multiple rules, AND/OR logic, or cross-column comparisons, the <a href="../pricing.html">Pro plan</a> is available at $5.99 per month. If you have questions or need help setting up your first rule, visit our <a href="../support.html">support page</a> or email us at <a href="mailto:vaibhav@aayutech.in">vaibhav@aayutech.in</a>.</p>
+
+  </article>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-copy">&copy; 2026 SheetGuard. All rights reserved.</span>
+      <ul class="footer-links">
+        <li><a href="../privacy.html">Privacy Policy</a></li>
+        <li><a href="../terms.html">Terms of Service</a></li>
+        <li><a href="../support.html">Support</a></li>
+        <li><a href="mailto:vaibhav@aayutech.in">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

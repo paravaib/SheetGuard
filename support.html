@@ -4,7 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support — SheetGuard</title>
-  <meta name="description" content="Get help with SheetGuard: Conditional Cell Lock & Data Validation for Google Sheets.">
+  <meta name="description" content="Get help with SheetGuard: Conditional Cell Lock & Data Validation for Google Sheets. FAQ, troubleshooting, and email support.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://paravaib.github.io/SheetGuard/support.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Support — SheetGuard">
+  <meta property="og:description" content="Get help with SheetGuard. FAQ, troubleshooting, and email support for conditional cell lock and data validation.">
+  <meta property="og:url" content="https://paravaib.github.io/SheetGuard/support.html">
+  <meta property="og:site_name" content="SheetGuard">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Support — SheetGuard">
+  <meta name="twitter:description" content="Get help with SheetGuard. FAQ, troubleshooting, and email support.">
+  <meta name="keywords" content="SheetGuard support, SheetGuard help, Google Sheets validation help, SheetGuard FAQ">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "name": "SheetGuard Support & FAQ",
+    "url": "https://paravaib.github.io/SheetGuard/support.html",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I install SheetGuard?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Install SheetGuard from the Google Workspace Marketplace. Once installed, open any Google Sheet, go to Extensions > SheetGuard > Open Sidebar. The sidebar will appear on the right side where you can create your first rule."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why was my edit reverted?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your edit triggered a validation rule. For example, if a rule says 'IF Status = Done, THEN Approval must not be empty,' changing Status to 'Done' without filling Approval will cause the edit to revert."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can other editors create or modify rules?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Only the spreadsheet owner can create, edit, delete, toggle, or reorder rules. Other editors see a 'View only' banner and have rules enforced on their edits automatically."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens when I paste many rows at once?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SheetGuard validates bulk pastes (up to 1,000+ rows) automatically. Rows that violate rules are highlighted in red with error notes. Your data is preserved — you can fix violations inline or press Ctrl+Z to undo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between Free and Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Free gives you 1 rule with 1 condition per sheet. Pro ($5.99/month) unlocks up to 25 rules per sheet, multiple conditions per rule, AND/OR logic, cross-column comparisons, custom required values, and rules on all sheets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I export my rules to another spreadsheet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Click the 'Export' button in the sidebar to copy your rules as JSON. Then open the target spreadsheet, open SheetGuard, and use the 'Import' button to paste and apply the rules."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will uninstalling delete my rules?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Rules are stored in the spreadsheet's DocumentProperties and persist even after uninstalling. However, rules will no longer be enforced without the add-on."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
