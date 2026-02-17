@@ -31,6 +31,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://paravaib.github.io/SheetGuard/blog/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://paravaib.github.io/SheetGuard/blog/lock-cells-google-sheets-based-on-value.html</loc>
     <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
